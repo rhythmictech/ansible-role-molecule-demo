@@ -2,7 +2,7 @@
 galaxy_info:
   author: Steven Black
   description: A role to demo Ansible Molecule's capabilities
-  company: @rhythmictech
+  company: "@rhythmictech"
   license: MIT
   min_ansible_version: 1.2
 
@@ -15,13 +15,13 @@ galaxy_info:
   # github_branch:
 
   platforms:
-  - name: Fedora
-    versions:
-    - all
+    - name: Fedora
+      versions:
+        - all
 
-  galaxy_tags: 
+  galaxy_tags:
     - demo
     - molecule
-    - hello-world
+    - helloworld
 
 dependencies: []
