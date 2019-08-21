@@ -1,0 +1,6 @@
+---
+# tasks file for molecule_demo
+
+- name: echo hello world
+  debug:
+    msg: hello world

@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  author: Steven Black
+  description: A role to demo Ansible Molecule's capabilities
+  company: @rhythmictech
+  license: MIT
+  min_ansible_version: 1.2
+
+  # Optionally specify the branch Galaxy will use when accessing the GitHub
+  # repo for this role. During role install, if no tags are available,
+  # Galaxy will use this branch. During import Galaxy will access files on
+  # this branch. If Travis integration is configured, only notifications for this
+  # branch will be accepted. Otherwise, in all cases, the repo's default branch
+  # (usually master) will be used.
+  # github_branch:
+
+  platforms:
+  - name: Fedora
+    versions:
+    - all
+
+  galaxy_tags: 
+    - demo
+    - molecule
+    - hello-world
+
+dependencies: []
