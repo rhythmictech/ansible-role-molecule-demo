@@ -194,3 +194,149 @@ Skipping, cleanup playbook not configured.
     localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
     
 ```
+
+
+### Run the role against our default test rig
+
+```
+$ molecule converge                                                                                                                        
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
+Validation completed successfully.
+--> Test matrix
+    
+└── default
+    ├── dependency
+    ├── create
+    ├── prepare
+    └── converge
+    
+--> Scenario: 'default'
+--> Action: 'dependency'
+Skipping, missing the requirements file.
+--> Scenario: 'default'
+--> Action: 'create'
+[DEPRECATION WARNING]: docker_image_facts is kept for backwards compatibility 
+but usage is discouraged. The module documentation details page may explain 
+more about this rationale.. This feature will be removed in a future release. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in 
+ansible.cfg.
+    
+    PLAY [Create] ******************************************************************
+    
+    TASK [Log into a Docker registry] **********************************************
+    skipping: [localhost] => (item=None) 
+    
+    TASK [Create Dockerfiles from image names] *************************************
+    changed: [localhost] => (item=None)
+    changed: [localhost]
+    
+    TASK [Discover local Docker images] ********************************************
+    ok: [localhost] => (item=None)
+    ok: [localhost]
+    
+    TASK [Build an Ansible compatible image] ***************************************
+    ok: [localhost] => (item=None)
+    ok: [localhost]
+    
+    TASK [Create docker network(s)] ************************************************
+    
+    TASK [Determine the CMD directives] ********************************************
+    ok: [localhost] => (item=None)
+    ok: [localhost]
+    
+    TASK [Create molecule instance(s)] *********************************************
+    changed: [localhost] => (item=None)
+    changed: [localhost]
+    
+    TASK [Wait for instance(s) creation to complete] *******************************
+    FAILED - RETRYING: Wait for instance(s) creation to complete (300 retries left).
+    changed: [localhost] => (item=None)
+    changed: [localhost]
+    
+    PLAY RECAP *********************************************************************
+    localhost                  : ok=6    changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+    
+    
+--> Scenario: 'default'
+--> Action: 'prepare'
+Skipping, prepare playbook not configured.
+--> Scenario: 'default'
+--> Action: 'converge'
+    
+    PLAY [Converge] ****************************************************************
+    
+    TASK [Gathering Facts] *********************************************************
+    ok: [instance]
+    
+    TASK [molecule_demo : echo hello world] ****************************************
+    ok: [instance] => {
+        "msg": "hello world"
+    }
+    
+    PLAY RECAP *********************************************************************
+    instance                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+
+Now we can log in!
+```
+$ molecule login
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/vagrant/molecule.yml.
+Validation completed successfully.
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
+Validation completed successfully.
+[root@instance /]# 
+```
+
+### Create a Vagrant Scenario and Run it!
+
+This [scenario]()
+is using the vagrant [driver]() 
+and 
+
+
+```
+$ molecule init scenario -d vagrant -s vagrant                                                                                           
+--> Initializing new scenario vagrant...
+Initialized scenario in /Users/sblack/Git/rhythmic/molecule_demo/molecule/vagrant successfully.
+```
+
+Run it 
+```
+$ molecule converge -s vagrant
+....
+```
+
+Log in
+```
+$ molecule login -s vagrant
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/vagrant/molecule.yml.
+Validation completed successfully.
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
+Validation completed successfully.
+Warning: Permanently added '[127.0.0.1]:2222' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-157-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+13 packages can be updated.
+9 updates are security updates.
+
+New release '18.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Wed Aug 21 20:15:46 2019 from 10.0.2.2
+vagrant@instance:~$ 
+```
+
+
+### Again with ec2 as the driver 
+
+```
+$ molecule init scenario -d ec2 -s ec2-scenario                                                                                        
+--> Initializing new scenario ec2-scenario...
+Initialized scenario in /Users/sblack/Git/rhythmic/molecule_demo/molecule/ec2-scenario successfully.
+```
