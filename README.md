@@ -337,6 +337,10 @@ vagrant@instance:~$
 
 ```
 $ molecule init scenario -d ec2 -s ec2-scenario                                                                                        
---> Initializing new scenario ec2-scenario...
+- -> Initializing new scenario ec2-scenario...
 Initialized scenario in /Users/sblack/Git/rhythmic/molecule_demo/molecule/ec2-scenario successfully.
 ```
+
+```
+# log in to AWS
+$ aws_okta_login infraservices-admin  
