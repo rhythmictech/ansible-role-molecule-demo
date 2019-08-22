@@ -414,3 +414,27 @@ Skipping, instances already prepared.
     PLAY RECAP *********************************************************************
     instance                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
+
+
+And we can log in! 
+```
+$ molecule login -s ec2-scenario
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/ec2-scenario/molecule.yml.
+Validation completed successfully.
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/vagrant/molecule.yml.
+Validation completed successfully.
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
+Validation completed successfully.
+Warning: Permanently added '18.204.56.74' (ECDSA) to the list of known hosts.
+Last login: Thu Aug 22 18:43:17 2019 from pool-108-51-226-95.washdc.fios.verizon.net
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+5 package(s) needed for security, out of 13 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-172-31-71-132 ~]$ 
+
+```
