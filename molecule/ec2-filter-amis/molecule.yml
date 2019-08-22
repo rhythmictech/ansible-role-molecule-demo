@@ -1,0 +1,21 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: ec2
+lint:
+  name: yamllint
+platforms:
+  - name: instance
+    image_name: packer_amazon_2*
+    image_owner: 312594956781
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-0aebc903f6d6d1831
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
