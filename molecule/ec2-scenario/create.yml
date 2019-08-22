@@ -5,7 +5,7 @@
   gather_facts: false
   no_log: "{{ not (lookup('env', 'MOLECULE_DEBUG') | bool or molecule_yml.provisioner.log|default(false) | bool) }}"
   vars:
-    ssh_user: ubuntu
+    ssh_user: ec2-user
     ssh_port: 22
 
     security_group_name: molecule
