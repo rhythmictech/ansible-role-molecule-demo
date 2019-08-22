@@ -7,18 +7,39 @@ Molecule is pretty rad, so rad that [Jeff Geerling is adopting it](https://www.j
 It helps you develop Ansible roles by providing out of the box:
 - linting with `yamlint`
 - syntax checking with `ansible-lint`
-- testing rigs on `docker`, `vagrant`, `ec2`, and friends
+- test "scenarios" on `docker`, `vagrant`, `ec2`, and friends
+- infrastructure testing with `testinfra`
 - idempotence tests
 - side effect tests
-- a fuller head of hair
+- a fuller head of hair 
+
+## Overview 
+Here, we'll 
+- Install Ansible Molecule 
+- Create an [Ansible Role](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
+- Run molecule's suite of tests
+- Create new [scenarios](https://molecule.readthedocs.io/en/stable/getting-started.html#molecule-scenarios), Including 
+    - testing in docker (the default)
+    - testing in vagrant 
+    - testing in ec2
 
 ## Getting Started
 
 ### Requirements
 The main requirements are documented in `requirements.txt` but this demo assumes you have a few other things installed including
-- docker
-- vagrant
-- aws cli 
+- `docker`
+- `vagrant`
+- `aws` cli 
+
+Practice safe python. Create a `virtualenv`.
+```
+virtualenv venv --python=python3.7
+```
+
+Install the python requirements
+```
+pip install -r requirements.txt
+```
 
 ### Create the role 
 ```
@@ -290,7 +311,7 @@ Validation completed successfully.
 
 ### Create a Vagrant Scenario and Run it!
 
-This [scenario]()
+This [scenario](https://molecule.readthedocs.io/en/stable/getting-started.html#molecule-scenarios)
 is using the vagrant [driver]() 
 and 
 
@@ -335,12 +356,61 @@ vagrant@instance:~$
 
 ### Again with ec2 as the driver 
 
+Create the Scenario
 ```
 $ molecule init scenario -d ec2 -s ec2-scenario                                                                                        
 - -> Initializing new scenario ec2-scenario...
 Initialized scenario in /Users/sblack/Git/rhythmic/molecule_demo/molecule/ec2-scenario successfully.
 ```
 
+Log in to AWS
 ```
-# log in to AWS
 $ aws_okta_login infraservices-admin  
+```
+
+* This is where I changed a few values in `molecule/ec2-scenario/molecule.yml` 
+so that ansible would use the right image in the right subnet. The Ansible code used to spin up the ec2 instances is in `molecule/ec2-scenario/create.yml`.
+
+
+Now we can run it!
+```
+$ molecule converge -s ec2-scenario                                                                                                        
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/ec2-scenario/molecule.yml.
+Validation completed successfully.
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/vagrant/molecule.yml.
+Validation completed successfully.
+--> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
+Validation completed successfully.
+--> Test matrix
+    
+└── ec2-scenario
+    ├── dependency
+    ├── create
+    ├── prepare
+    └── converge
+    
+--> Scenario: 'ec2-scenario'
+--> Action: 'dependency'
+Skipping, missing the requirements file.
+--> Scenario: 'ec2-scenario'
+--> Action: 'create'
+Skipping, instances already created.
+--> Scenario: 'ec2-scenario'
+--> Action: 'prepare'
+Skipping, instances already prepared.
+--> Scenario: 'ec2-scenario'
+--> Action: 'converge'
+    
+    PLAY [Converge] ****************************************************************
+    
+    TASK [Gathering Facts] *********************************************************
+    ok: [instance]
+    
+    TASK [molecule_demo : echo hello world] ****************************************
+    ok: [instance] => {
+        "msg": "hello world"
+    }
+    
+    PLAY RECAP *********************************************************************
+    instance                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
