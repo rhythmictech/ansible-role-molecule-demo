@@ -25,7 +25,7 @@ Here, we'll
 
 Watch a tutorial on [asciicast](https://asciinema.org/a/7r1fPy0wIZPh0Jsp1Xj2tdYTQ)
 
-<script id="asciicast-7r1fPy0wIZPh0Jsp1Xj2tdYTQ" src="https://asciinema.org/a/7r1fPy0wIZPh0Jsp1Xj2tdYTQ.js" speed="1.75" async></script>
+[![asciicast](https://asciinema.org/a/7r1fPy0wIZPh0Jsp1Xj2tdYTQ.svg)](https://asciinema.org/a/7r1fPy0wIZPh0Jsp1Xj2tdYTQ)
 
 ## Getting Started
 
