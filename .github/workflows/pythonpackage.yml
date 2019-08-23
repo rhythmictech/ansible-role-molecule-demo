@@ -14,8 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-        repository:
-          description: molecule_demo
+        with:
+          repository: molecule_demo
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
