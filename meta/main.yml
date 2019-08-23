@@ -19,7 +19,7 @@ galaxy_info:
       versions:
         - 7
     - name: Amazon Linux
-      versions: 
+      versions:
         - 2
 
   galaxy_tags:

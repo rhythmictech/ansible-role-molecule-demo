@@ -12,7 +12,9 @@
 - name: this is what the file will contain
   debug: var=hello_world
 
-- name: let them know we were here
+- name: let them know we were here  # noqa 301
   shell: >
     echo "{{ hello_world }}" > \
     /tmp/hello.world
+  args:
+    creates: /tmp/hello.world

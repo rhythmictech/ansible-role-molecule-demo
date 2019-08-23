@@ -5,7 +5,7 @@ driver:
   name: ec2
 lint:
   name: yamllint
-vpc_id: 
+vpc_id:
 platforms:
   - name: instance
     image: ami-04eec835e8cc022e1

@@ -67,7 +67,7 @@
       with_items: "{{ molecule_yml.platforms }}"
 
     - name: Get latest image from list of images
-      set_fact: 
+      set_fact:
         latest_image: "{{ ami_facts.results[0].images | sort(attribute='creation_date', reverse=true) | first }}"
 
     - name: Set image ID to image variable
