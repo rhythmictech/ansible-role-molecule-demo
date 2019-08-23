@@ -23,6 +23,10 @@ Here, we'll
     - testing in vagrant 
     - testing in ec2
 
+Watch a tutorial on [asciicast](https://asciinema.org/a/7r1fPy0wIZPh0Jsp1Xj2tdYTQ)
+
+<script id="asciicast-7r1fPy0wIZPh0Jsp1Xj2tdYTQ" src="https://asciinema.org/a/7r1fPy0wIZPh0Jsp1Xj2tdYTQ.js" speed="1.75" async></script>
+
 ## Getting Started
 
 ### Requirements
