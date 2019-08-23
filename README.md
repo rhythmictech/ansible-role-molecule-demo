@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ### Make sure Molecule is installed 
 ```
-$ molecule --help                                                                                                                 
+$ molecule --help
 Usage: molecule [OPTIONS] COMMAND [ARGS]...
 
    _____     _             _
@@ -91,14 +91,14 @@ Commands:
 ### Create the role 
 Much like `ansible-galaxy init` molecule provides a nice template for new roles. 
 ```
-$ molecule init role -r molecule_demo                                                                                                                             
+$ molecule init role -r molecule_demo
 --> Initializing new role molecule_demo...
 Initialized role in /Users/sblack/Git/rhythmic/molecule_demo successfully.
 ```
 
 ### Run ALL the tests 
 ```
-$ molecule test                                                                                                                        
+$ molecule test
 --> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
 Validation completed successfully.
 --> Test matrix
@@ -234,7 +234,7 @@ Skipping, side effect playbook not configured.
     platform darwin -- Python 3.7.4, pytest-5.0.1, py-1.8.0, pluggy-0.12.0
     rootdir: /Users/sblack/Git/rhythmic/molecule_demo/molecule/default
     plugins: testinfra-3.0.5
-collected 1 item                                                               
+collected 1 item 
     
     tests/test_default.py .                                                  [100%]
     
@@ -268,7 +268,7 @@ Skipping, cleanup playbook not configured.
 ### Run the role against our default test rig
 
 ```
-$ molecule converge                                                                                                                        
+$ molecule converge
 --> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
 Validation completed successfully.
 --> Test matrix
@@ -365,7 +365,7 @@ and
 
 
 ```
-$ molecule init scenario -d vagrant -s vagrant                                                                                           
+$ molecule init scenario -d vagrant -s vagrant
 --> Initializing new scenario vagrant...
 Initialized scenario in /Users/sblack/Git/rhythmic/molecule_demo/molecule/vagrant successfully.
 ```
@@ -406,7 +406,7 @@ vagrant@instance:~$
 
 Create the Scenario
 ```
-$ molecule init scenario -d ec2 -s ec2-scenario                                                                                        
+$ molecule init scenario -d ec2 -s ec2-scenario
 - -> Initializing new scenario ec2-scenario...
 Initialized scenario in /Users/sblack/Git/rhythmic/molecule_demo/molecule/ec2-scenario successfully.
 ```
@@ -422,7 +422,7 @@ so that ansible would use the right image in the right subnet. The Ansible code 
 
 Now we can run it!
 ```
-$ molecule converge -s ec2-scenario                                                                                                        
+$ molecule converge -s ec2-scenario
 --> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/ec2-scenario/molecule.yml.
 Validation completed successfully.
 --> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/vagrant/molecule.yml.
