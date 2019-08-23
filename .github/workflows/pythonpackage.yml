@@ -1,5 +1,5 @@
 ---
-name: Python package
+name: Molecule Test
 
 on: [push, commit]
 
@@ -14,6 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+        repository:
+          description: molecule_demo
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
