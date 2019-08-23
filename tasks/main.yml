@@ -5,5 +5,14 @@
   debug:
     msg: hello world
 
+- name: set file contents fact
+  set_fact:
+    hello_world: "hello world, dated: {{ ansible_date_time.iso8601 }}"
+
+- name: this is what the file will contain
+  debug: var=hello_world
+
 - name: let them know we were here
-  shell: echo "hello world" >> /tmp/hello.world
+  shell: >
+    echo "{{ hello_world }}" > \
+    /tmp/hello.world
