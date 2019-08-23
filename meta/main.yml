@@ -15,9 +15,12 @@ galaxy_info:
   # github_branch:
 
   platforms:
-    - name: Fedora
+    - name: centos
       versions:
-        - all
+        - 7
+    - name: Amazon Linux
+      versions: 
+        - 2
 
   galaxy_tags:
     - demo
