@@ -4,3 +4,6 @@
 - name: echo hello world
   debug:
     msg: hello world
+
+- name: let them know we were here
+  shell: echo "hello world" >> /tmp/hello.world
