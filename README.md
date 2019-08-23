@@ -41,14 +41,62 @@ Install the python requirements
 pip install -r requirements.txt
 ```
 
+### Make sure Molecule is installed 
+```
+$ molecule --help                                                                                                                 
+Usage: molecule [OPTIONS] COMMAND [ARGS]...
+
+   _____     _             _
+  |     |___| |___ ___ _ _| |___
+  | | | | . | | -_|  _| | | | -_|
+  |_|_|_|___|_|___|___|___|_|___|
+
+  Molecule aids in the development and testing of Ansible roles.
+
+  Enable autocomplete issue:
+
+    eval "$(_MOLECULE_COMPLETE=source molecule)"
+
+Options:
+  --debug / --no-debug    Enable or disable debug mode. Default is disabled.
+  -c, --base-config TEXT  Path to a base config.  If provided Molecule will
+                          load this config first, and deep merge each
+                          scenario's molecule.yml on top.
+                          (/Users/sblack/.config/molecule/config.yml)
+  -e, --env-file TEXT     The file to read variables from when rendering
+                          molecule.yml. (.env.yml)
+  --version               Show the version and exit.
+  --help                  Show this message and exit.
+
+Commands:
+  check        Use the provisioner to perform a Dry-Run...
+  cleanup      Use the provisioner to cleanup any changes...
+  converge     Use the provisioner to configure instances...
+  create       Use the provisioner to start the instances.
+  dependency   Manage the role's dependencies.
+  destroy      Use the provisioner to destroy the instances.
+  idempotence  Use the provisioner to configure the...
+  init         Initialize a new role or scenario.
+  lint         Lint the role.
+  list         Lists status of instances.
+  login        Log in to one instance.
+  matrix       List matrix of steps used to test instances.
+  prepare      Use the provisioner to prepare the instances...
+  side-effect  Use the provisioner to perform side-effects...
+  syntax       Use the provisioner to syntax check the role.
+  test         Test (lint, destroy, dependency, syntax,...
+  verify       Run automated tests against instances.
+  ```
+
 ### Create the role 
+Much like `ansible-galaxy init` molecule provides a nice template for new roles. 
 ```
 $ molecule init role -r molecule_demo                                                                                                                             
 --> Initializing new role molecule_demo...
 Initialized role in /Users/sblack/Git/rhythmic/molecule_demo successfully.
 ```
 
-## Run ALL the tests 
+### Run ALL the tests 
 ```
 $ molecule test                                                                                                                        
 --> Validating schema /Users/sblack/Git/rhythmic/molecule_demo/molecule/default/molecule.yml.
