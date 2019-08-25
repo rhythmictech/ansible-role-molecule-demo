@@ -27,4 +27,4 @@ jobs:
           pip install -r requirements.txt
       - name: Test with molecule
         run: |
-          molecule --debug test
+          molecule test
