@@ -1,4 +1,7 @@
 # molecule_demo
+[![](https://github.com/rhythmictech/ansible-role-molecule-demo/workflows/Molecule%20Test/badge.svg)](https://github.com/rhythmictech/ansible-role-molecule-demo/actions)
+
+
 A "role" to demonstrate the power of [Ansible Molecule](https://molecule.readthedocs.io/en/stable/)
 
 
