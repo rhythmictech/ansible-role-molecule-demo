@@ -1,7 +1,7 @@
 ---
 name: Molecule Test
 
-on: [push, commit]
+on: [push]
 
 jobs:
   build:
